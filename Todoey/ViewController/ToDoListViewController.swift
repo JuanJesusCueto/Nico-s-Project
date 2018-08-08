@@ -10,11 +10,14 @@ import UIKit
 
 class ToDoListViewController: UITableViewController {
 
-    let itemArray = ["Find Mike", "Buy Eggs", "Destroy Demogorgon"]
+    var itemArray = [ItemTodDo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        itemArray.append(ItemTodDo.init(title: "Buy Eggs", done: false))
+        itemArray.append(ItemTodDo.init(title: "Go Shopping", done: false))
+        itemArray.append(ItemTodDo.init(title: "Destroy Demorogon", done: false))
     }
 
 }
@@ -28,7 +31,7 @@ extension ToDoListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row]
+        cell.textLabel?.text = itemArray[indexPath.row].title
         return cell
     }
 }
